@@ -13,6 +13,13 @@ def hello():
         return "Internal Server Error", 500
     return "Hello from the environment ngt8zi57!"
 
+@app.route('/health')
+def health_check():
+    global is_healthy
+    if not is_healthy:
+        return "Unhealthy", 500
+    return "Healthy", 200
+
 @app.route('/break')
 def break_app():
     global is_healthy
